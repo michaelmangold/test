@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web01
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: web01
+  template:
+    metadata:
+      labels:
+        app: web01
+    spec:
+      containers:
+      - image: nginx:latest
+        name: web01
+        ports:
+        - containerPort: 80
